@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utils.css">
+    <link rel="stylesheet" href="js/script.js">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark fixed-top p-0">""
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-school"></i>
+                <span class="$danger">İstanbul</span>
+                Üniversitesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header navbar-dark bg-dark">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">İstanbul Üniversitesi</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body navbar-dark bg-dark">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Haberler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Sınav Sonuçları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Giriş
+                    </a>
+                            <ul class="dropdown-menu " aria-labelledby="offcanvasNavbarDropdown">
+                                <li class="px-2 py-2">
+                                    <div class="mb-2">
+                                        <label for="exampleDropdownFormEmail1" class="form-label">Email adresi</label>
+                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                    </div>
+                                </li>
+                                <li class="px-2 py-2">
+                                    <div class="mb-2">
+                                        <label for="exampleDropdownFormPassword1" class="form-label">Şifre</label>
+                                        <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Şifre">
+                                    </div>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="d-grid gap-2 mx-2">
+                                    <button type="submit" class="btn btn-primary">Giriş</button>
+                                </li>
+                            </ul>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3">
+                    <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Ara</button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <!-- Sonuclar -->
+        <div class="container pt-4 content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Sınav Sonuçları
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="input-group"></div>
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-3">
+                                            İsim
+                                            <input type="text" id="txtTaskName" class="form-control">
+                                        </div>
+                                        <div class="col-3">
+                                            Soyisim
+                                            <input type="text" id="txtTaskName2" class="form-control">
+                                        </div>
+                                        <div class="col-3">
+                                            Final
+                                            <input type="text" id="txtTaskName3" class="form-control">
+                                        </div>
+                                        <div class="col-3">
+                                            Vize
+                                            <input type="text" id="txtTaskName4" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex">
+                                        <div class="col-6">
+                                            <button id="btnClear" class="mt-2 btn btn-danger col-12">
+                                                Temizle
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                        <button type="submit" class="mt-2 btn btn-primary col-12" id="btnAddNewTask">
+                                            Ekle
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mt-2  ">
+                        <div class="card-header d-flex flex-row justify-content-between fw-bolder px-4">
+                            <p>İsim</p>
+                            <p>Soyisim</p>
+                            <p>Final</p>
+                            <p>Vize</p>
+                        </div>
+                        <ul id="task-list" class="list-group list-group-flush ">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        "use strict";
+        // GörevListesi
+        let gorevListesi = [
+            {"id": 1, "gorevAdi": "Efe", "gorevSoyadi": "Doğan", "vize": "60", "final": "70" },
+            {"id": 2, "gorevAdi": "İlknur", "gorevSoyadi": "Avcı", "vize": "75", "final": "70" },
+            {"id": 3, "gorevAdi": "Eylül", "gorevSoyadi": "Akgül", "vize": "90", "final": "85" },
+            {"id": 4, "gorevAdi": "Mert", "gorevSoyadi": "Bakır", "vize": "40", "final": "65" },
+        ];
+
+        let editId;
+        let isEditTask = false;
+
+        const taskInput = document.querySelector("#txtTaskName");
+        const taskInput2 = document.querySelector("#txtTaskName2");
+        const taskInput3 = document.querySelector("#txtTaskName3");
+        const taskInput4 = document.querySelector("#txtTaskName4");
+
+        const clearBtn = document.querySelector("btnClear");
+
+        displayTasks();
+
+
+        
+        
+        // GörevSeçme
+        function displayTasks() {
+                let ul = document.getElementById("task-list");
+                ul.innerHTML = "";
+
+                if (gorevListesi.length == 0) {
+                    ul.innerHTML = "<p class='p-3 m-0'>Görev listeniz boş.</p>"
+                } else {
+
+                for(let gorev of gorevListesi) {
+                    let li = `
+                        <li class="task list-group-item">
+                            <div class="d-flex flex-row justify-content-between mx-3">
+                                <label for="${gorev.id}" class="form-label">${gorev.gorevAdi}</label>
+                                <label for="${gorev.id}" class="form-label">${gorev.gorevSoyadi}</label>
+                                <label for="${gorev.id}" class="form-label">${gorev.vize}</label>
+                                <label for="${gorev.id}" class="form-label">${gorev.final}</label>
+                            </div>
+                            <div class="dropdown float-end">
+                                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a onclick="deleteTask(${gorev.id})" class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Sil</a></li>
+                                        <li><a onclick='editTask(${gorev.id}, "${gorev.gorevAdi}","${gorev.gorevSoyadi}","${gorev.vize}","${gorev.final}")' class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Düzenle</a></li>
+                                    </ul>
+                            </div>
+                        </li>
+                    `;
+                    ul.insertAdjacentHTML("beforeend", li);           
+                }
+            }
+        }
+        document.querySelector("#btnAddNewTask").addEventListener("click", newTask);
+        document.querySelector("#btnAddNewTask").addEventListener("keypress", function(){
+            if (event.key == "Enter") {
+                document.getElementById("btnAddNewTask").click();
+            }
+        });
+        
+        // Silme
+        function deleteTask(id) {
+            let deletedId;
+            for(let index in gorevListesi) {
+                if(gorevListesi[index].id == id) {
+                    deletedId = index;
+                }
+            }
+            gorevListesi.splice(deletedId, 1);
+            displayTasks();
+        }
+
+        // bug
+        function newTask(event) {
+            if (taskInput4.value == "") {
+                alert("görev girmelisiniz");
+            } else {
+                if (!isEditTask) {
+                    // ekleme
+                    gorevListesi.push({ "id": gorevListesi.length + 1, "gorevAdi": taskInput.value, "gorevSoyadi": taskInput2.value, "final": taskInput3.value, "vize": taskInput4.value });
+                } else {
+                    // güncelleme
+                    for (let gorev of gorevListesi) {
+                        if (gorev.id == editId) {
+                            gorev.gorevAdi = taskInput.value;
+                            gorev.gorevSoyadi = taskInput2.value;
+                            gorev.vize = taskInput3.value;
+                            gorev.final = taskInput4.value;
+                        }
+                        isEditTask = false;
+                    }
+                }
+                taskInput.value = "";
+                taskInput2.value = "";
+                taskInput3.value = "";
+                taskInput4.value = "";
+
+                displayTasks();
+            }
+            event.preventDefault();
+        }
+        
+        
+        // Düzenleme
+        function editTask(taskId, taskName, taskName2, taskName3, taskName4) {
+            editId = taskId;
+            isEditTask = true;
+            taskInput.value = taskName;
+            taskInput2.value = taskName2;
+            taskInput3.value = taskName3;
+            taskInput4.value = taskName4;
+            taskInput.focus();
+            taskInput.classList.add("active");
+            console.log("edit id:", editId);
+            console.log("edit Name", taskInput);
+            console.log("edit Surname", taskInput2);
+            console.log("edit final", taskInput3);
+            console.log("edit vize", taskInput4);
+        }
+    
+        btnClear.addEventListener("click", function() {
+            gorevListesi.splice(0, gorevListesi.length);
+            displayTasks();
+        })
+    </script>
+
+    
+
+</body>
+</html>

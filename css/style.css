@@ -55,6 +55,61 @@ img {
   font-size: 3rem;
 }
 
+/* header */
+.main-header {
+  background-image: url("../img/FileHandler.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+}
+
+.main-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.main-header .content {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  position: relative;
+
+}
+
+.main-header * {
+  z-index: 2;
+}
+
+#header-content {
+  z-index: 0;
+}
+
+.offcanvas {
+  z-index: 7;
+}
+
+/* section */
+
+.slider__nav {
+  max-height: 250px;
+}
+
+.section__video .video {
+  width: 650px;
+  height: 415px;
+}
+
 /* content */
 .content {
   margin-top: 56px;
